@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.zxpm.entity.Bid" table="bid" catalog="zxpm">
+		<id name="bidId" type="java.lang.Integer">
+			<column name="BidId" />
+			<generator class="native"></generator>
+		</id>
+		
+		<many-to-one name="buyer" class="com.zxpm.entity.Users" fetch="select" lazy="false">
+			<column name="BuyerId" not-null="true" />
+		</many-to-one>
+		
+		<many-to-one name="goods" class="com.zxpm.entity.Goods" fetch="select" lazy="false">
+			<column name="GoodsId" not-null="true" />
+		</many-to-one>
+		
+		<property name="bidTime" type="java.sql.Timestamp">
+			<column name="BidTime" length="19" not-null="true" />
+		</property>
+		
+		<property name="bidPrice" type="java.lang.Float">
+			<column name="BidPrice" precision="12" scale="0" not-null="true" />
+		</property>
+		
+		<property name="bidStatus" type="java.lang.Integer">
+			<column name="BidStatus" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

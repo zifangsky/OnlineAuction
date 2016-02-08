@@ -1,0 +1,29 @@
+.editbox { 
+	background: #E3E3E3; 
+	border-bottom: #333333 1px solid; 
+	border-left: 0px; 
+	border-right: 0px; 
+	border-top: 0px; 
+	color: #333333; 
+	cursor: text; 
+	font-family: "Arial"; 
+	font-size: 9pt; 
+	height: 20px; 
+	padding: 1px
+}
+
+.unnamed1 {
+	border: 1px solid #000000;
+}
+.info_title{
+	text-decoration: none;
+	color:#000;
+	width:54px;
+	text-align:center;
+	border-right: #6c6c6c 1px solid; 
+	border-top: #acacac 1px solid; 
+	border-left: #acacac 1px solid; 
+	border-bottom: #6c6c6c 1px solid; 
+	vertical-align: bottom;
+	
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.zxpm.entity.Goods" table="goods" catalog="zxpm">
+		<id name="goodsId" type="java.lang.Integer">
+			<column name="GoodsId" />
+			<generator class="native"></generator>
+		</id>
+		
+		<many-to-one name="buyer" class="com.zxpm.entity.Users" fetch="select" lazy="false">
+			<column name="BuyerId" not-null="true" />
+		</many-to-one>
+		
+		<many-to-one name="saler" class="com.zxpm.entity.Users" fetch="select" lazy="false">
+			<column name="SalerId" not-null="true" />
+		</many-to-one>
+		
+		<property name="goodsName" type="java.lang.String">
+			<column name="GoodsName" length="16" not-null="true" />
+		</property>
+		
+		<property name="goodsPrice" type="java.lang.Float">
+			<column name="GoodsPrice" precision="12" scale="0" not-null="true" />
+		</property>
+		
+		<property name="goodsPic" type="java.lang.String">
+			<column name="GoodsPic" length="200" />
+		</property>
+		
+		<property name="goodsDesc" type="java.lang.String">
+			<column name="GoodsDesc" length="16777215" />
+		</property>
+				
+		<property name="goodsStatus" type="java.lang.Integer">
+			<column name="GoodsStatus" not-null="true" />
+		</property>
+		
+		<set name="bids" inverse="true" lazy="false">
+			<key>
+				<column name="GoodsId" not-null="true" />
+			</key>
+			<one-to-many class="com.zxpm.entity.Bid"/>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<!-- 声明事务管理器 -->
+	<bean id="myHibTxManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 定义事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="myHibTxManager">
+		<!-- 定义事务传播规则 -->
+		<tx:attributes>
+			<!-- 对get/load/search开头的方法应用只读事务规则 -->
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="load*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="search*" propagation="SUPPORTS" read-only="true" />
+			<!-- 对其他方法应用REQUIRED事务规则 -->
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<!-- 对com.zxpm.biz包下的所有类的所有方法都应用事务规则 -->
+		<aop:pointcut id="bizMethods" expression="execution(* com.zxpm.biz.*.*(..))" />
+		<!-- 将事务通知和切面组合 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" />
+	</aop:config>
+
+	<!-- 配置数据源，proxool数据库连接池 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.logicalcobwebs.proxool.ProxoolDriver" />
+		<!-- proxool配置文件中的别名要一致 -->
+		<property name="url" value="proxool.ProxoolPool" />
+	</bean>
+
+	<!-- 配置sessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		
+
+		<property name="mappingResources">
+			<list>
+				<!-- 加载实体配置文件 -->
+				<value>com/zxpm/entity/Bid.hbm.xml</value>
+				<value>com/zxpm/entity/Goods.hbm.xml</value>
+				<value>com/zxpm/entity/Users.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="goodsDAO" class="com.zxpm.dao.impl.GoodsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="goodsBiz" class="com.zxpm.biz.impl.GoodsBizImpl">
+		<property name="goodsDAO" ref="goodsDAO" />
+	</bean>
+	<bean id="goods" class="com.zxpm.action.GoodsAction" scope="prototype">
+		<property name="goodsBiz" ref="goodsBiz" />
+	</bean>
+
+	<bean id="userDAO" class="com.zxpm.dao.impl.UserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userBiz" class="com.zxpm.biz.impl.UserBizImpl">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+	<bean id="user" class="com.zxpm.action.UserAction" scope="prototype">
+		<property name="userBiz" ref="userBiz" />
+	</bean>
+	
+	<bean id="bidDAO" class="com.zxpm.dao.impl.BidDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="bidBiz" class="com.zxpm.biz.impl.BidBizImpl">
+		<property name="bidDAO" ref="bidDAO" />
+	</bean>
+	<bean id="bid" class="com.zxpm.action.BidAction" scope="prototype">
+		<property name="goodsBiz" ref="goodsBiz" />
+		<property name="bidBiz" ref="bidBiz" />
+		<property name="userBiz" ref="userBiz" />
+	</bean>
+
+</beans>

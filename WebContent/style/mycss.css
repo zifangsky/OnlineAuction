@@ -1,0 +1,80 @@
+body {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 18px;
+	color: #666666;
+	margin: 0px;
+}
+td {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 18px;
+	color: #666666;	
+}
+a:link {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF6600;
+	text-decoration: underline;
+}
+.style01 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF6600;
+}
+.style02 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #008AFF;
+	font-weight: normal;
+
+
+
+}
+a.button:link {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #0099FF;
+	text-decoration: none;
+}
+a.button:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #0099FF;
+	text-decoration: none;
+}
+a.button:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #0099FF;
+	text-decoration: underline;
+}
+.style03 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bolder;
+	color: #CC6600;
+}
+.style04 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+}
+.style05 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #35627F;
+	font-weight: bold;
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.zxpm.entity.Users" table="users" catalog="zxpm">
+		<id name="userId" type="java.lang.Integer">
+			<column name="UserID" />
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="userName" type="java.lang.String">
+			<column name="UserName" length="16" not-null="true" />
+		</property>
+		
+		<property name="password" type="java.lang.String">
+			<column name="Password" length="16" not-null="true" />
+		</property>
+		
+		<property name="telephone" type="java.lang.String">
+			<column name="Telephone" length="16" not-null="true" />
+		</property>
+		
+		<property name="address" type="java.lang.String">
+			<column name="Address" length="16" not-null="true" />
+		</property>
+		
+	</class>
+
+</hibernate-mapping>
