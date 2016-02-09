@@ -7,9 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>在线商品拍卖网-出价</title>
-<link href="/OnlineAuction/style/mycss.css" rel="stylesheet" type="text/css" />
-<link href="/OnlineAuction/style/texts.css" rel="stylesheet" type="text/css" />
-<link href="/OnlineAuction/style/btn.css" rel="stylesheet" type="text/css" />
+<link href="/OnlineAuction/style/mycss.css" rel="stylesheet"
+	type="text/css" />
+<link href="/OnlineAuction/style/texts.css" rel="stylesheet"
+	type="text/css" />
+<link href="/OnlineAuction/style/btn.css" rel="stylesheet"
+	type="text/css" />
 <style>
 .table_title {
 	border: solid 1px #aaa;
@@ -23,12 +26,12 @@
 	<table width="780" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr>
-			<td colspan="5"><img src="/OnlineAuction/images/top.jpg" width="780"
-				height="213"></td>
+			<td colspan="5"><img src="/OnlineAuction/images/top.jpg"
+				width="780" height="213"></td>
 		</tr>
 		<tr>
-			<td colspan="5"><img src="/OnlineAuction/images/middle1.jpg" width="780"
-				height="47"></td>
+			<td colspan="5"><img src="/OnlineAuction/images/middle1.jpg"
+				width="780" height="47"></td>
 		</tr>
 		<tr>
 			<td width="38" background="/OnlineAuction/images/middle2.jpg">&nbsp;</td>
@@ -80,8 +83,8 @@
 			<td width="40" background="/OnlineAuction/images/middle4.jpg">&nbsp;</td>
 		</tr>
 		<tr>
-			<td colspan="5"><img src="/OnlineAuction/images/bottom.jpg" width="780"
-				height="82"></td>
+			<td colspan="5"><img src="/OnlineAuction/images/bottom.jpg"
+				width="780" height="82"></td>
 		</tr>
 	</table>
 	<P align="center">zifangsky 版权所有</P>

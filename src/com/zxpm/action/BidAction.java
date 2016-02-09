@@ -22,6 +22,7 @@ public class BidAction extends ActionSupport {
 	
 	public void setBidId(int bidId) {
 		this.bidId = bidId;
+		
 	}
 
 	public void setGoodsBiz(GoodsBiz goodsBiz) {

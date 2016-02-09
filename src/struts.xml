@@ -5,68 +5,90 @@
 
 <struts>
 	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
-    <constant name="struts.serve.static.browserCache" value="false" />
-    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
-    <constant name="struts.configuration.xml.reload" value="true" />
-    <!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
-    <constant name="struts.devMode" value="true" />
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+	<constant name="struts.devMode" value="true" />
 
 	<constant name="struts.action.extension" value="do,action"></constant>
 	<constant name="struts.i18n.encoding" value="utf-8"></constant>
-	<constant name="struts.multipart.maxSize" value="4194304" /><!-- 4M -->	
-	
+	<constant name="struts.multipart.maxSize" value="4194304" /><!-- 
+		4M -->
+
 	<package name="goods" namespace="/goods" extends="struts-default">
+		<global-results>
+			<result name="error">/error.html</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
 		<action name="toOnSaleGoodsList" class="goods" method="toOnSaleGoodsList">
 			<result name="list">/onSaleGoodsList.jsp</result>
 		</action>
-		
+
 		<action name="toMyGoods" class="goods" method="toMyGoods">
 			<result name="myGoods">/mygoods.jsp</result>
 		</action>
-		
+
 		<action name="toAddGoods" class="goods" method="toAddGoods">
 			<result name="input">/addgoods.jsp</result>
 			<result name="index" type="redirect">/index.jsp</result>
 			<interceptor-ref name="fileUpload">
-                <!-- 文件过滤 -->
-                <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
-                <!-- 文件大小, 以字节为单位 -->
-                <param name="maximumSize">4194304</param>
-            </interceptor-ref>
-            <interceptor-ref name="defaultStack" />
-			
+				<!-- 文件过滤 -->
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
+				<!-- 文件大小, 以字节为单位 -->
+				<param name="maximumSize">4194304</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+
 		</action>
 
 		<action name="doBid" class="goods" method="doBid">
 			<result name="goodsBid">/goods_bid.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="user" namespace="/user" extends="struts-default">
+		<global-results>
+			<result name="error">/error.html</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
 		<action name="addUser" class="user" method="addUser">
 			<result type="redirect">/index.jsp</result>
 			<result name="login">/login.jsp</result>
 			<result name="input">/register.jsp</result>
 		</action>
-		
+
 		<action name="doLogin" class="user" method="login">
 			<result name="index" type="redirect">/index.jsp</result>
 		</action>
-		
+
 		<action name="loginout" class="user" method="loginout">
 			<result type="redirect">/index.jsp</result>
 		</action>
-		
+
 		<action name="modifyPwd" class="user" method="modifyPassword">
 			<result type="redirect">/index.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="bid" namespace="/bid" extends="struts-default">
+		<global-results>
+			<result name="error">/error.html</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
 		<action name="doSubmitBid" class="bid" method="doSubmitBid">
 			<result name="index" type="redirect">/index.jsp</result>
 		</action>
-		
+
 		<action name="doDeal" class="bid" method="doDeal">
 			<result name="index" type="redirect">/index.jsp</result>
 		</action>

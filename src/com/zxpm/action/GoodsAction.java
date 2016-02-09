@@ -119,12 +119,5 @@ public class GoodsAction extends ActionSupport{
 		
 		return formatDate + random + extension;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
