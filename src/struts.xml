@@ -17,13 +17,24 @@
 		4M -->
 
 	<package name="goods" namespace="/goods" extends="struts-default">
+		<interceptors>
+			<!-- 声明拦截器 -->
+			<interceptor name="errorInterceptor" class="com.zxpm.interceptor.ErrorInterceptor" />
+			<!-- 配置拦截器栈 -->
+			<interceptor-stack name="myErrorInterceptor">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="errorInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 覆盖底层的拦截器栈 对包中的所有action都有效 -->
+		<default-interceptor-ref name="myErrorInterceptor" />
 		<global-results>
-			<result name="error">/error.html</result>
+			<result name="errorMsg">/error.jsp</result>
 		</global-results>
 		<global-exception-mappings>
-			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+			<exception-mapping result="errorMsg" exception="java.lang.Exception"></exception-mapping>
 		</global-exception-mappings>
-		
+
 		<action name="toOnSaleGoodsList" class="goods" method="toOnSaleGoodsList">
 			<result name="list">/onSaleGoodsList.jsp</result>
 		</action>
@@ -51,13 +62,24 @@
 	</package>
 
 	<package name="user" namespace="/user" extends="struts-default">
+		<interceptors>
+			<!-- 声明拦截器 -->
+			<interceptor name="errorInterceptor" class="com.zxpm.interceptor.ErrorInterceptor" />
+			<!-- 配置拦截器栈 -->
+			<interceptor-stack name="myErrorInterceptor">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="errorInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 覆盖底层的拦截器栈 对包中的所有action都有效 -->
+		<default-interceptor-ref name="myErrorInterceptor" />
 		<global-results>
-			<result name="error">/error.html</result>
+			<result name="errorMsg">/error.jsp</result>
 		</global-results>
 		<global-exception-mappings>
-			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+			<exception-mapping result="errorMsg" exception="java.lang.Exception"></exception-mapping>
 		</global-exception-mappings>
-		
+
 		<action name="addUser" class="user" method="addUser">
 			<result type="redirect">/index.jsp</result>
 			<result name="login">/login.jsp</result>
@@ -78,13 +100,24 @@
 	</package>
 
 	<package name="bid" namespace="/bid" extends="struts-default">
+		<interceptors>
+			<!-- 声明拦截器 -->
+			<interceptor name="errorInterceptor" class="com.zxpm.interceptor.ErrorInterceptor" />
+			<!-- 配置拦截器栈 -->
+			<interceptor-stack name="myErrorInterceptor">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="errorInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 覆盖底层的拦截器栈 对包中的所有action都有效 -->
+		<default-interceptor-ref name="myErrorInterceptor" />
 		<global-results>
-			<result name="error">/error.html</result>
+			<result name="errorMsg">/error.jsp</result>
 		</global-results>
 		<global-exception-mappings>
-			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+			<exception-mapping result="errorMsg" exception="java.lang.Exception"></exception-mapping>
 		</global-exception-mappings>
-		
+
 		<action name="doSubmitBid" class="bid" method="doSubmitBid">
 			<result name="index" type="redirect">/index.jsp</result>
 		</action>

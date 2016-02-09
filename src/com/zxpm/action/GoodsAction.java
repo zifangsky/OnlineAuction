@@ -70,7 +70,7 @@ public class GoodsAction extends ActionSupport{
 		
 		List<Goods> myGoodsList = goodsBiz.getGoods(good);
 		ServletActionContext.getRequest().setAttribute("mygoodslist", myGoodsList);
-		
+
 		return "myGoods";
 	}
 	
