@@ -106,6 +106,7 @@ public class GoodsAction extends ActionSupport{
 	public String doBid(){
 		Goods g = goodsBiz.getGoodsByGoodsId(goods.getGoodsId());
 		ServletActionContext.getRequest().setAttribute("g", g);
+		
 		return "goodsBid";
 	}
 	

@@ -14,7 +14,6 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
 public class ErrorInterceptor implements Interceptor {
 	public String intercept(ActionInvocation arg0) throws Exception {	
 		try {
-			
 			String result = arg0.invoke(); // Action的返回值
 			return result;
 		} catch (DataAccessException ex) {

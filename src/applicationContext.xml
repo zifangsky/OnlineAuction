@@ -98,5 +98,11 @@
 		<property name="bidBiz" ref="bidBiz" />
 		<property name="userBiz" ref="userBiz" />
 	</bean>
+	<bean id="errorInterceptor" class="com.zxpm.interceptor.ErrorInterceptor">
+	
+	</bean>
+	<bean id="checkInterceptor" class="com.zxpm.interceptor.CheckInterceptor">
+	
+	</bean>
 
 </beans>

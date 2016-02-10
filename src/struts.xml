@@ -19,11 +19,12 @@
 	<package name="goods" namespace="/goods" extends="struts-default">
 		<interceptors>
 			<!-- 声明拦截器 -->
-			<interceptor name="errorInterceptor" class="com.zxpm.interceptor.ErrorInterceptor" />
+			<interceptor name="loginInterceptor" class="checkInterceptor" />
+			<interceptor name="errorInterceptor" class="errorInterceptor" />
 			<!-- 配置拦截器栈 -->
-			<interceptor-stack name="myErrorInterceptor">
-				<interceptor-ref name="defaultStack" />
-				<interceptor-ref name="errorInterceptor" />
+			<interceptor-stack name="myErrorInterceptor">	
+				<interceptor-ref name="defaultStack" />				
+				<interceptor-ref name="errorInterceptor" />		
 			</interceptor-stack>
 		</interceptors>
 		<!-- 覆盖底层的拦截器栈 对包中的所有action都有效 -->
@@ -41,33 +42,43 @@
 
 		<action name="toMyGoods" class="goods" method="toMyGoods">
 			<result name="myGoods">/mygoods.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
+			<interceptor-ref name="defaultStack" />	
+			<interceptor-ref name="loginInterceptor" />
 		</action>
 
 		<action name="toAddGoods" class="goods" method="toAddGoods">
 			<result name="input">/addgoods.jsp</result>
 			<result name="index" type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
+			
 			<interceptor-ref name="fileUpload">
 				<!-- 文件过滤 -->
 				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
 				<!-- 文件大小, 以字节为单位 -->
 				<param name="maximumSize">4194304</param>
 			</interceptor-ref>
-			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="defaultStack" />	
+			<interceptor-ref name="loginInterceptor" />
 
 		</action>
 
 		<action name="doBid" class="goods" method="doBid">
 			<result name="goodsBid">/goods_bid.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
+			<interceptor-ref name="defaultStack" />	
+			<interceptor-ref name="loginInterceptor" />
 		</action>
 	</package>
 
 	<package name="user" namespace="/user" extends="struts-default">
 		<interceptors>
 			<!-- 声明拦截器 -->
-			<interceptor name="errorInterceptor" class="com.zxpm.interceptor.ErrorInterceptor" />
+			<interceptor name="loginInterceptor" class="checkInterceptor" />
+			<interceptor name="errorInterceptor" class="errorInterceptor" />
 			<!-- 配置拦截器栈 -->
 			<interceptor-stack name="myErrorInterceptor">
-				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="defaultStack" />		
 				<interceptor-ref name="errorInterceptor" />
 			</interceptor-stack>
 		</interceptors>
@@ -82,7 +93,6 @@
 
 		<action name="addUser" class="user" method="addUser">
 			<result type="redirect">/index.jsp</result>
-			<result name="login">/login.jsp</result>
 			<result name="input">/register.jsp</result>
 		</action>
 
@@ -92,20 +102,27 @@
 
 		<action name="loginout" class="user" method="loginout">
 			<result type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
+			<interceptor-ref name="defaultStack" />	
+			<interceptor-ref name="loginInterceptor" />
 		</action>
 
 		<action name="modifyPwd" class="user" method="modifyPassword">
 			<result type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
+			<interceptor-ref name="defaultStack" />	
+			<interceptor-ref name="loginInterceptor" />
 		</action>
 	</package>
 
 	<package name="bid" namespace="/bid" extends="struts-default">
 		<interceptors>
 			<!-- 声明拦截器 -->
-			<interceptor name="errorInterceptor" class="com.zxpm.interceptor.ErrorInterceptor" />
+			<interceptor name="loginInterceptor" class="checkInterceptor" />
+			<interceptor name="errorInterceptor" class="errorInterceptor" />
 			<!-- 配置拦截器栈 -->
 			<interceptor-stack name="myErrorInterceptor">
-				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="defaultStack" />		
 				<interceptor-ref name="errorInterceptor" />
 			</interceptor-stack>
 		</interceptors>
@@ -120,10 +137,16 @@
 
 		<action name="doSubmitBid" class="bid" method="doSubmitBid">
 			<result name="index" type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
+			<interceptor-ref name="defaultStack" />	
+			<interceptor-ref name="loginInterceptor" />
 		</action>
 
 		<action name="doDeal" class="bid" method="doDeal">
 			<result name="index" type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
+			<interceptor-ref name="defaultStack" />	
+			<interceptor-ref name="loginInterceptor" />
 		</action>
 
 	</package>
