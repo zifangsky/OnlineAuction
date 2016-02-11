@@ -2,6 +2,7 @@
 SSH框架实战项目——在线商品拍卖网
 
 这个项目属于学习Java Web的SSH框架的练习之作，参考至《Struts2+Spring+Hibernate框架技术与项目实战》这本书的第24章。
+
 一 介绍
 （1）开发环境：
 eclipse for javaee + JDK1.8x + tomcat1.8 + MySQL5.x
