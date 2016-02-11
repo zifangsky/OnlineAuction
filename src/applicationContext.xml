@@ -19,7 +19,7 @@
 	</bean>
 
 	<!-- 定义事务通知 -->
-	<tx:advice id="txAdvice" transaction-manager="myHibTxManager">
+	<tx:advice id="tx_Advice" transaction-manager="myHibTxManager">
 		<!-- 定义事务传播规则 -->
 		<tx:attributes>
 			<!-- 对get/load/search开头的方法应用只读事务规则 -->
@@ -34,7 +34,7 @@
 		<!-- 对com.zxpm.biz包下的所有类的所有方法都应用事务规则 -->
 		<aop:pointcut id="bizMethods" expression="execution(* com.zxpm.biz.*.*(..))" />
 		<!-- 将事务通知和切面组合 -->
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" />
+		<aop:advisor advice-ref="tx_Advice" pointcut-ref="bizMethods" />
 	</aop:config>
 
 	<!-- 配置数据源，proxool数据库连接池 -->
